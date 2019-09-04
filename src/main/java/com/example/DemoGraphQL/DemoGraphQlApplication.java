@@ -5,6 +5,7 @@ import com.example.DemoGraphQL.model.Author;
 import com.example.DemoGraphQL.model.Book;
 import com.example.DemoGraphQL.repository.AuthorRepository;
 import com.example.DemoGraphQL.repository.BookRepository;
+import com.example.DemoGraphQL.repository.ReclamationRepository;
 import com.example.DemoGraphQL.resolver.BookResolver;
 import com.example.DemoGraphQL.resolver.Mutation;
 import com.example.DemoGraphQL.resolver.Query;
@@ -59,15 +60,16 @@ public class DemoGraphQlApplication {
 	}
 
 	@Bean
-	public Query query(AuthorRepository authorRepository, BookRepository bookRepository) {
-		return new Query(authorRepository, bookRepository);
+	public Query query(AuthorRepository authorRepository, BookRepository bookRepository, ReclamationRepository reclamationRepository ) {
+		return new Query(authorRepository, bookRepository, reclamationRepository);
 	}
 
 	@Bean
-	public Mutation mutation(AuthorRepository authorRepository, BookRepository bookRepository) {
-		return new Mutation(authorRepository, bookRepository);
+	public Mutation mutation(AuthorRepository authorRepository, BookRepository bookRepository, ReclamationRepository reclamationRepository) {
+		return new Mutation(authorRepository, bookRepository, reclamationRepository);
 	}
 
+	/*
 	@Bean
 	public CommandLineRunner demo(AuthorRepository authorRepository, BookRepository bookRepository) {
 		return (args) -> {
@@ -77,4 +79,5 @@ public class DemoGraphQlApplication {
 			bookRepository.save(new Book("Java: A Beginner's Guide, Sixth Edition", "0071809252", 728, author));
 		};
 	}
+	*/
 }

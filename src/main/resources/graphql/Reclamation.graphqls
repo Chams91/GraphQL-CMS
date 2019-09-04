@@ -1,0 +1,14 @@
+type Reclamation {
+	id: ID!
+	firstName: String!
+    lastName: String!
+    }
+ 
+ extend type Query {
+ 	findAllReclamations: [Reclamation]!
+ 	countReclamations: Long!
+ 	}
+ 	
+ extend type Mutation {
+ 	newReclamation(firstName: String!, lastName: String!) : Reclamation!
+ 	}

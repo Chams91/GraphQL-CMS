@@ -4,16 +4,21 @@ import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import com.example.DemoGraphQL.exception.BookNotFoundException;
 import com.example.DemoGraphQL.model.Author;
 import com.example.DemoGraphQL.model.Book;
+import com.example.DemoGraphQL.model.Reclamation;
 import com.example.DemoGraphQL.repository.AuthorRepository;
 import com.example.DemoGraphQL.repository.BookRepository;
+import com.example.DemoGraphQL.repository.ReclamationRepository;
 
 public class Mutation implements GraphQLMutationResolver {
     private BookRepository bookRepository;
     private AuthorRepository authorRepository;
+    private ReclamationRepository reclamationRepository;
 
-    public Mutation(AuthorRepository authorRepository, BookRepository bookRepository) {
+    public Mutation(AuthorRepository authorRepository, BookRepository bookRepository, ReclamationRepository reclamationRepository) {
         this.authorRepository = authorRepository;
         this.bookRepository = bookRepository;
+        this.reclamationRepository = reclamationRepository;
+        
     }
 
     public Author newAuthor(String firstName, String lastName) {
@@ -36,6 +41,16 @@ public class Mutation implements GraphQLMutationResolver {
         bookRepository.save(book);
 
         return book;
+    }
+    
+    public Reclamation newReclamation(String firstName, String lastName) {
+    	Reclamation reclamation = new Reclamation();
+    	reclamation.setFirstName(firstName);
+        reclamation.setLastName(lastName);
+         
+    	reclamationRepository.save(reclamation);
+    	
+    	return reclamation;
     }
 
     public boolean deleteBook(Long id) {
