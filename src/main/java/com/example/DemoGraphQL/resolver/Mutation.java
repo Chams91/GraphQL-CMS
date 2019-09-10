@@ -43,10 +43,13 @@ public class Mutation implements GraphQLMutationResolver {
         return book;
     }
     
-    public Reclamation newReclamation(String firstName, String lastName) {
+    public Reclamation newReclamation(String matricule, String nomClient, String adresseExp, String adresseDest) {
     	Reclamation reclamation = new Reclamation();
-    	reclamation.setFirstName(firstName);
-        reclamation.setLastName(lastName);
+    	reclamation.setMatricule(matricule);
+        reclamation.setNomClient(nomClient);
+        reclamation.setAddresseExp(adresseExp);
+        reclamation.setAdresseDest(adresseDest);
+        
          
     	reclamationRepository.save(reclamation);
     	

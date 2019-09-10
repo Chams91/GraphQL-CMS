@@ -1,7 +1,9 @@
 type Reclamation {
 	id: ID!
-	firstName: String!
-    lastName: String!
+	matricule: String!
+    nomClient: String!
+    adresseExp: String!
+    adresseDest: String!
     }
  
  extend type Query {
@@ -10,5 +12,5 @@ type Reclamation {
  	}
  	
  extend type Mutation {
- 	newReclamation(firstName: String!, lastName: String!) : Reclamation!
+ 	newReclamation(matricule: String! ,nomClient: String! ,adresseExp: String! ,adresseDest: String!) : Reclamation!
  	}
